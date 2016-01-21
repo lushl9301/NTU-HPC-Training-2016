@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=main.c hello.c factorial.c
+OBJECTS=$(patsubst %.c, %.o, $(SOURCES))
+
+EXECUTABLE=hello
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	@echo "=====>" $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+%.o : %.c
+	$(CC) $(CFLAGS) $< -o $@
